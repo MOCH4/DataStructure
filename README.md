@@ -1,30 +1,130 @@
-# 数据结构大纲
 	
 ## 基本概念 
-###  1.数据结构
+###  1. 数据结构
 * 数据结构是相互之间存在一种或多种特定关系的数据元素的集合
 * 数据结构包含三方面：逻辑结构、存储结构、数据的运算
-### 2.抽象数据类型
+### 2. 抽象数据类型
 * 抽象数据类型是一个数学模型以及定义在该模型上的一组操作
 * 抽象数据类型定义只取决于一组逻辑特性，与如何实现无关
-### 3.算法
+### 3. 算法
 * 算法的特性：有穷性、确定性、可行性、输入、输出
 * 好算法的目标：正确性、可读性、健壮性、效率与低存储要求
 * 时间复杂度：所有语句重复次数的最高阶
 * 空间复杂度：额外占用的存储空间大小规模
 	
 ## 线性表
-### 1.定义及概念
+### 1. 定义及概念
 * 线性表是n个相同数据类型的数据元素的有限序列。
-### 2.结构体
-### 3.创建与删除对象
+### 2. 结构体
+ ```cpp
+struct StructName{
+    ElemType elem1;
+    ElemType elem2;
+    ...;
+}StructName;
+ ```
+### 3. 链表
+1.单链表 
+|  data   | next  |
+|  ----  | ----  |
++ 单链表结点
+ ```cpp
+ struct ListNode{
+     ElemType data;//数据域
+     struct ListNode *next;//指针域
+ }ListNode;  
+ ```
++ 创建
+```cpp
+ListNode *LinkList = new ListNode();
+```
+ 2.双链表
+|  prior  |  data  |  next  |
+|  ----  |  ----  |  ----  |
+ + 双链表结点
+```cpp
+ struct DListNode{
+     ElemType data;//数据域
+     struct ListNode * prior, *next;//指针域
+ }DListNode;  
+ ```
++ 创建
+```cpp
+DListNode *DLinkList = new DListNode();
+```
 ### 4.基本操作
-* 按值查找
 * 按位查找
-* 插入、删除
+```cpp
+ListNode *GetElem(ListNode *L, int i) {
+    int count = i;           //从1开始计数
+    ListNode *p = L->next;   //p指向第一个结点
+    if (i == 0) return L;    // i=0，返回头节点
+    if (i < 1) return NULL;  //i无效，返回NULL
+    while (p && count < i) { //遍历找到第i个结点
+        p = p->next;
+        j++;
+    }
+    return p;               //返回指向第i个结点的指针
+}
+``` 
+* 按值查找
+```cpp
+ListNode *LocateElem(ListNode *L, ElemType e) {
+    ListNode *p = L->next;              
+    while (p != NULL && p->data != e) {//从第一个结点查找data等于e的结点
+        p = p->next;
+    } 
+    return p;   //返回指向值为e的指针
+}
+```
+* 插入
+```cpp
+//后插法
+ListNode *ListInsert_Back(ListNode *L, ListNode *s, int i) {
+    ListNode *p = GetElem(L, i-1);//p指向插入位置的前驱结点
+    s->next = p->next;            //修改指针域
+    p->next = s;
+    return L;
+}
+
+//前插法
+ListNode *ListInsert_front(ListNode *L, LinkList*s, int i) {
+    ListNode *p = GetElem(L, i-1);
+    s->next = p->next;        //修改指针域
+    p->next = s;
+    ElemType temp = p->data; //交换数据域
+    p->data = s->data;
+    s->data = temp; 
+    return L;
+}
+```
+* 删除
+```cpp
+//删除第i个结点
+ListNode *ListDelete(ListNode *L, int i) {
+    ListNode *p = GetElem(L, i-1);
+    ListNode *q = p->next;
+    p->next = q->next; //前驱结点指向后继结点
+    delete(q);         //释放内存空间
+    return L;
+}
+
+//删除结点*p
+ListNode *ListDelete(ListNode*p) {
+    ListNode *q = p->next;
+    p->data = p->next->data; //将后继结点的值赋给p
+    p->next = q->next;       //删除后继结点
+    delete(q);
+    return p;
+}
+```
+
 * 遍历输出
+
 * 交换元素位置
+
 * 插入与删除的复杂度
+
 	
 ## 栈与队列
 ### 1.概念
