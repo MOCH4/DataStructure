@@ -1,16 +1,21 @@
-	
 ## 基本概念 
 ###  1. 数据结构
 * 数据结构是相互之间存在一种或多种特定关系的数据元素的集合
-* 数据结构包含三方面：逻辑结构、存储结构、数据的运算
+* 数据结构三要素
+    + 逻辑结构、存储结构、数据的运算
 ### 2. 抽象数据类型
-* 抽象数据类型是一个数学模型以及定义在该模型上的一组操作
+* 抽象数据类型
+    + 一个数学模型以及定义在该模型上的一组操作
 * 抽象数据类型定义只取决于一组逻辑特性，与如何实现无关
 ### 3. 算法
-* 算法的特性：有穷性、确定性、可行性、输入、输出
-* 好算法的目标：正确性、可读性、健壮性、效率与低存储要求
-* 时间复杂度：所有语句重复次数的最高阶
-* 空间复杂度：额外占用的存储空间大小规模
+* __算法的特性__
+    + 有穷性、确定性、可行性、输入、输出
+* __好算法的目标__
+    + 正确性、可读性、健壮性、效率与低存储要求
+* __时间复杂度__
+    + 所有语句重复次数的最高阶
+* __空间复杂度__
+    + 额外占用的存储空间大小规模
 	
 ## 线性表
 ### 1. 定义及概念
@@ -24,7 +29,7 @@ struct StructName{
 }StructName;
  ```
 ### 3. 链表
-1.单链表 
+__单链表__
 |  data   | next  |
 |  ----  | ----  |
 + 单链表结点
@@ -38,7 +43,7 @@ struct StructName{
 ```cpp
 ListNode *LinkList = new ListNode();
 ```
- 2.双链表
+__双链表__
 |  prior  |  data  |  next  |
 |  ----  |  ----  |  ----  |
  + 双链表结点
@@ -53,7 +58,7 @@ ListNode *LinkList = new ListNode();
 DListNode *DLinkList = new DListNode();
 ```
 ### 4.基本操作
-* 按位查找
+* __按位查找__
 ```cpp
 ListNode *GetElem(ListNode *L, int i) {
     int count = i;           //从1开始计数
@@ -67,7 +72,7 @@ ListNode *GetElem(ListNode *L, int i) {
     return p;               //返回指向第i个结点的指针
 }
 ``` 
-* 按值查找
+* __按值查找__
 ```cpp
 ListNode *LocateElem(ListNode *L, ElemType e) {
     ListNode *p = L->next;              
@@ -77,7 +82,7 @@ ListNode *LocateElem(ListNode *L, ElemType e) {
     return p;   //返回指向值为e的指针
 }
 ```
-* 插入
+* __插入__
 ```cpp
 //后插法
 ListNode *ListInsert_Back(ListNode *L, ListNode *s, int i) {
@@ -98,7 +103,7 @@ ListNode *ListInsert_front(ListNode *L, LinkList*s, int i) {
     return L;
 }
 ```
-* 删除
+* __删除__
 ```cpp
 //删除第i个结点
 ListNode *ListDelete(ListNode *L, int i) {
@@ -119,11 +124,20 @@ ListNode *ListDelete(ListNode*p) {
 }
 ```
 
-* 遍历输出
+* __遍历输出__
+```cpp
 
-* 交换元素位置
+```
 
-* 插入与删除的复杂度
+* __交换元素位置__
+```cpp
+
+```
+* __插入与删除的复杂度__
+    + 前插
+    + 后插
+    + 删除第i个结点
+    + 删除给定结点p 
 
 	
 ## 栈与队列
@@ -150,7 +164,7 @@ ListNode *ListDelete(ListNode*p) {
 ### 2.二、三维数组地址求解
 ### 3.特殊数组存储方式
 ### 4.广义表的长度与深度
-### 5.head、tail 的操作
+### 5.head、tail的操作
 
 ## 数与二叉树
 ### 1.定义及概念
