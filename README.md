@@ -27,35 +27,20 @@ struct StructName{
 * 线性表是n个相同数据类型的数据元素的有限序列，表示元素间一对一的关系（逻辑结构）
 * 线性表有两种储存方式：顺序表、链表（存储结构）
 
-### 2. 链表
-* __单链表__
-    |  data   | next  |
-    |  ----  | ----  |
-    + 结点
-    ```cpp
-    struct ListNode{
-        ElemType data;//数据域
-        struct ListNode *next;//指针域
-    }ListNode;  
-     ```
-    + 创建
-    ```cpp
-    ListNode *LinkList = new ListNode();
-    ```
-* __双链表__
-    |  prior  |  data  |  next  |
-    |  ----  |  ----  |  ----  |
-    + 结点
-    ```cpp
-    struct DListNode{
-        ElemType data;//数据域
-        struct ListNode * prior, *next;//指针域
-    }DListNode;  
-    ```
-    + 创建
-    ```cpp
-    DListNode *DLinkList = new DListNode();
-    ```
+### 2. 单链表
+|  data   | next  |
+|  ----  | ----  |
++ 结点
+```cpp
+struct ListNode{
+    ElemType data;//数据域
+    struct ListNode *next;//指针域
+}ListNode;  
+```
++ 创建
+```cpp
+ListNode *LinkList = new ListNode();
+```
 ### 3. 链表基本操作
 * __按位查找__
 ```cpp
@@ -144,6 +129,19 @@ ListNode *ListDelete(ListNode*p) {
 * 循环链表
 
 * 双向链表
+    |  prior  |  data  |  next  |
+    |  ----  |  ----  |  ----  |
+    + 结点
+    ```cpp
+    struct DListNode{
+        ElemType data;//数据域
+        struct ListNode * prior, *next;//指针域
+    }DListNode;  
+    ```
+    + 创建
+    ```cpp
+    DListNode *DLinkList = new DListNode();
+    ```
 
 * 静态链表
 
