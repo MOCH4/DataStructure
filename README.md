@@ -147,7 +147,7 @@ ListNode *ListDelete(ListNode*p) {
 
 ### 5. 其他链表
 * 循环链表  
-    循环链表最后一个结点的指针不是NULL，而是指向头节点，即tail->next = head
+    &#8195;&#8195;循环链表最后一个结点的指针不是NULL，而是指向头节点，即tail->next = head
 * 双向链表
     |  prior  |  data  |  next  |
     |  ----  |  ----  |  ----  |
@@ -164,7 +164,7 @@ ListNode *ListDelete(ListNode*p) {
     ```
 
 * 静态链表  
-    静态链表用数组来描述线性表的链式存储结构
+    &#8195;&#8195;静态链表用数组来描述线性表的链式存储结构
     | index |  data  |  next  |
     | :--:  |  :--:  |  :--:  |
     |0||2|
@@ -179,12 +179,10 @@ ListNode *ListDelete(ListNode*p) {
 ## 栈与队列
 
 ### 1. 定义及性质
-* 栈
-    + 栈是只允许在一端进行插入和删除的线性表（FILO）
-* 队列
-    + 队列是只允许在表的一端进行插入，另一段进行删除的线性表（FIFO）
+* 栈是只允许在一端进行插入和删除的线性表（FILO）
+* 队列是只允许在表的一端进行插入，另一段进行删除的线性表（FIFO）
 
-### 2.顺序栈
+### 2. 顺序栈
 * 结构体 
 ```cpp
 struct SqStack{
@@ -199,16 +197,18 @@ void InitStack(SqStack &S) {
     S.top == 0;//栈顶指针(指向栈顶元素的下一个存储单元)
 }
 ```
-* 顺序栈的基本操作
+
+### 3. 顺序栈的基本操作
+
+* __入栈__（push）
 ```cpp
-//入栈（push）
 bool StackPush(SqStack &S, ElemType x) {
     if (StackFull()) return false;
     S.data[S.top++] == x//先送值到栈顶元素，后移动指针
 }
 ```
+* __出栈__（pop）
 ```cpp
-//出栈（pop）
 bool StackPop(SqStack &S, ElemType &x) {
     if (!StackEmpty()) {
         ElemType x;
@@ -218,35 +218,35 @@ bool StackPop(SqStack &S, ElemType &x) {
     return false;
 }
 ```
+* 取栈顶元素
 ```cpp
-//取栈顶元素
 bool getTop(SqStack S, ElemType &x) {
     if (!StackEmpty()) return false;
     x = S.data[S.top - 1];
     return true;
 }
 ```
+* 判断栈满
 ```cpp
-//判断栈满
-    bool StackFull(SqSatck S){
-        return S.top == StackSize;
-    }
+bool StackFull(SqSatck S){
+    return S.top == StackSize;
+}
 ```
+* 判断栈空
 ```cpp
-//判断栈空
 bool StackEmpty(SqStack S) {
     return S.top == 0;
 }
 ```
+* 求栈长
 ```cpp
-//求栈长
 int StackLength(SqStack S) {
     return S.top;
 }
 ```
 
 ### 3. 共享栈
-* 两个栈共享一个一维数组空间，两个栈的栈底分别设置在共享空间的两端，两个栈顶向共享空间中间延伸
+&#8195;&#8195;两个栈共享一个一维数组空间，两个栈的栈底分别设置在共享空间的两端，两个栈顶向共享空间中间延伸
 
 * 结构体
 ```cpp
