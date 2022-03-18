@@ -1,4 +1,5 @@
 # 数据结构 
+
 ## 目录
 1. 基本概念
 2. C++语法
@@ -11,12 +12,15 @@
 9. 查找与排序
 
 ## 基本概念 
+
 ###  1. 数据结构
 * 数据结构是相互之间存在一种或多种特定关系的数据元素的集合
 * 数据结构三要素：逻辑结构、存储结构、数据的运算
+
 ### 2. 抽象数据类型
 * 抽象数据类型：一个数学模型以及定义在该模型上的一组操作
 * 抽象数据类型定义只取决于一组逻辑特性，与如何实现无关
+
 ### 3. 算法
 * 算法的特性
     + 有穷性、确定性、可行性、输入、输出
@@ -25,6 +29,7 @@
 * __时间复杂度__：所有语句重复次数的最高阶
 * __空间复杂度__：额外占用的存储空间大小规模
 ## C++语法
+
 ### 1. 结构体
 ```cpp
 struct StructName{
@@ -35,7 +40,8 @@ struct StructName{
 ```
 
 ## 线性表
-### 1. 定义及概念
+
+### 1. 定义及性质
 * 线性表是n个相同数据类型的数据元素的有限序列，表示元素间一对一的关系（逻辑结构）
 * 线性表有两种储存方式：顺序表、链表（存储结构）
 
@@ -110,7 +116,7 @@ ListNode *ListDelete(ListNode *L, int i) {
     return L;
 }
 
-//删除结点*p
+//删除给定结点*p
 ListNode *ListDelete(ListNode*p) {
     ListNode *q = p->next;
     p->data = p->next->data; //将后继结点的值赋给p
@@ -120,26 +126,28 @@ ListNode *ListDelete(ListNode*p) {
 }
 ```
 
-* __遍历输出__
+* 遍历输出
 ```cpp
 
 ```
 
-* __交换元素位置__
+* 交换元素位置
 ```cpp
 
 ```
+
 ### 4. 链表插入与删除的复杂度  
-|        |  时间复杂度  |  空间复杂度  |
+|  操作  |  时间复杂度  |  空间复杂度  |
 |  :---  |  :--:  |  :--:  |
 |  前插  | O(n)  |  O(1)  |
 |  后插  | O(n)  |  O(1)  |
 |  删除第i个结点  |  O(n)  |  O(1)  |
 |  删除给定结点p  |  O(1)  |  O(1)  |
+* 主要的时间耗费是找到第i个结点
 
 ### 5. 其他链表
-* 循环链表
-
+* 循环链表  
+    循环链表最后一个结点的指针不是NULL，而是指向头节点，即tail->next = head
 * 双向链表
     |  prior  |  data  |  next  |
     |  ----  |  ----  |  ----  |
@@ -155,20 +163,126 @@ ListNode *ListDelete(ListNode*p) {
     DListNode *DLinkList = new DListNode();
     ```
 
-* 静态链表
+* 静态链表  
+    静态链表用数组来描述线性表的链式存储结构
+    | index |  data  |  next  |
+    | :--:  |  :--:  |  :--:  |
+    |0||2|
+    |1|b|6|
+    |2|a|1|
+    |3|d|-1|
+    |4|||
+    |5|||
+    |6|c|3|
+    * 静态链表对应的单链表a->b->c->d
 
 ## 栈与队列
-### 1. 概念
-* 
+
+### 1. 定义及性质
+* 栈
+    + 栈是只允许在一端进行插入和删除的线性表（FILO）
+* 队列
+    + 队列是只允许在表的一端进行插入，另一段进行删除的线性表（FIFO）
+
 ### 2.顺序栈
-* 出入栈指针变化
+* 结构体 
+```cpp
+struct SqStack{
+    ElemType data[StackSize];
+    int top; 
+}SqStack;
+```
+* 指针初始位置
+```cpp
+//初始化
+void InitStack(SqStack &S) {
+    S.top == 0;//栈顶指针(指向栈顶元素的下一个存储单元)
+}
+```
+* 顺序栈的基本操作
+```cpp
+//入栈（push）
+bool StackPush(SqStack &S, ElemType x) {
+    if (StackFull()) return false;
+    S.data[S.top++] == x//先送值到栈顶元素，后移动指针
+}
+```
+```cpp
+//出栈（pop）
+bool StackPop(SqStack &S, ElemType &x) {
+    if (!StackEmpty()) {
+        ElemType x;
+        x = S.data[--S.top];//先移动指针，后赋值给x
+        return ture;
+    }
+    return false;
+}
+```
+```cpp
+//取栈顶元素
+bool getTop(SqStack S, ElemType &x) {
+    if (!StackEmpty()) return false;
+    x = S.data[S.top - 1];
+    return true;
+}
+```
+```cpp
+//判断栈满
+    bool StackFull(SqSatck S){
+        return S.top == StackSize;
+    }
+```
+```cpp
+//判断栈空
+bool StackEmpty(SqStack S) {
+    return S.top == 0;
+}
+```
+```cpp
+//求栈长
+int StackLength(SqStack S) {
+    return S.top;
+}
+```
+
 ### 3. 共享栈
+* 两个栈共享一个一维数组空间，两个栈的栈底分别设置在共享空间的两端，两个栈顶向共享空间中间延伸
+
+* 结构体
+```cpp
+struct ShareStack{
+    ElemType data[StackSize];
+    int top0;
+    int top1;
+}ShareStack;
+```
+* 指针初始位置
+```cpp
+//初始化
+S.top0 == 0;//栈顶指针(指向栈顶元素的下一个存储单元)
+S.top1 == StackSize - 1;
+```
+* 指针变化模式
+```cpp
+//S0入栈
+S.data[S.top0++] = x;
+//S1入栈
+S.data[S.top1--] = x;
+//S0出栈
+x = S.data[--S.top0];
+//S1出栈
+x = S.data[++S.top1];
+```
+
+### 4. 队列
+
+
+
+### 5. 循环队列
 * 指针初始位置
 * 指针变化模式
-### 4. 循环队列
-* 指针初始位置
-* 指针变化模式
-### 5. 栈与队列算法应用
+
+### 6. 栈与队列算法应用
 	
 ## 串
 ### 1. 定义及概念
