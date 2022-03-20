@@ -1,6 +1,6 @@
-# 数据结构 
+# __数据结构__ 
 
-## 目录
+## __目录__
 1. 基本概念
 2. C++语法
 3. 线性表
@@ -11,7 +11,7 @@
 8. 图
 9. 查找与排序
 
-## 基本概念 
+## __基本概念__
 
 ###  1. 数据结构
 * 数据结构是相互之间存在一种或多种特定关系的数据元素的集合
@@ -22,13 +22,11 @@
 * 抽象数据类型定义只取决于一组逻辑特性，与如何实现无关
 
 ### 3. 算法
-* 算法的特性
-    + 有穷性、确定性、可行性、输入、输出
-* 好算法的目标
-    + 正确性、可读性、健壮性、效率与低存储要求
+* 算法的特性：有穷性、确定性、可行性、输入、输出
+* 好算法的目标：正确性、可读性、健壮性、效率与低存储要求
 * __时间复杂度__：所有语句重复次数的最高阶
 * __空间复杂度__：额外占用的存储空间大小规模
-## C++语法
+## __C++__
 
 ### 1. 结构体
 ```cpp
@@ -39,7 +37,15 @@ struct StructName{
 }StructName;
 ```
 
-## 线性表
+### 2. C++标准库STL
+* vector 可变数组
+* string 字符串
+* unordered_map 哈希map
+* unordered_set 哈希set
+* queue 队列
+* stack 栈
+
+## __线性表__
 
 ### 1. 定义及性质
 * 线性表是n个相同数据类型的数据元素的有限序列，表示元素间一对一的关系（逻辑结构）
@@ -174,9 +180,9 @@ ListNode *ListDelete(ListNode*p) {
     |4|||
     |5|||
     |6|c|3|
-    * 静态链表对应的单链表a->b->c->d
+    &#8195;&#8195;静态链表对应的单链表a->b->c->d
 
-## 栈与队列
+## __栈与队列__
 
 ### 1. 定义及性质
 * 栈是只允许在一端进行插入和删除的线性表（FILO）
@@ -186,7 +192,7 @@ ListNode *ListDelete(ListNode*p) {
 * 结构体 
 ```cpp
 struct SqStack{
-    ElemType data[StackSize];
+    ElemType data[MaxSize];
     int top; 
 }SqStack;
 ```
@@ -197,17 +203,17 @@ void InitStack(SqStack &S) {
     S.top == 0;//栈顶指针(指向栈顶元素的下一个存储单元)
 }
 ```
+* 顺序栈的基本操作  
 
-### 3. 顺序栈的基本操作
-
-* __入栈__（push）
+__入栈__（push）
 ```cpp
 bool StackPush(SqStack &S, ElemType x) {
     if (StackFull()) return false;
     S.data[S.top++] == x//先送值到栈顶元素，后移动指针
 }
-```
-* __出栈__（pop）
+```  
+  
+__出栈__（pop）
 ```cpp
 bool StackPop(SqStack &S, ElemType &x) {
     if (!StackEmpty()) {
@@ -218,7 +224,7 @@ bool StackPop(SqStack &S, ElemType &x) {
     return false;
 }
 ```
-* 取栈顶元素
+__取栈顶元素__
 ```cpp
 bool getTop(SqStack S, ElemType &x) {
     if (!StackEmpty()) return false;
@@ -226,19 +232,19 @@ bool getTop(SqStack S, ElemType &x) {
     return true;
 }
 ```
-* 判断栈满
+判断栈满
 ```cpp
 bool StackFull(SqSatck S){
-    return S.top == StackSize;
+    return S.top == MaxSize;
 }
 ```
-* 判断栈空
+__判断栈空__
 ```cpp
 bool StackEmpty(SqStack S) {
     return S.top == 0;
 }
 ```
-* 求栈长
+求栈长
 ```cpp
 int StackLength(SqStack S) {
     return S.top;
@@ -251,7 +257,7 @@ int StackLength(SqStack S) {
 * 结构体
 ```cpp
 struct ShareStack{
-    ElemType data[StackSize];
+    ElemType data[MaxSize];
     int top0;
     int top1;
 }ShareStack;
@@ -274,24 +280,58 @@ x = S.data[--S.top0];
 x = S.data[++S.top1];
 ```
 
-### 4. 队列
-
-
-
-### 5. 循环队列
+### 4. 循环队列
+* 存储结构
+```cpp
+struct SqQueue{
+    ElemType data[MaxSize];
+    int front, rear;
+}
+```
 * 指针初始位置
+```cpp
+void InitQueue (Sq)
+```
 * 指针变化模式
+
+### 5. 链队列
+* 存储结构
+```cpp
+struct LinkNode{//链队列结点
+    ElemType data;
+    struct LinkNode *next;
+}LinkNode;
+struct {
+    LinkNode *front, *rear;//头尾指针
+}LinkQueue;
+```
+* 基本操作
+
+入队
+```cpp
+void EnQueue(LinkQueue &Q, ElemType x) {
+    LinkNode *s = new LinkNode();
+    s->data = x;
+    s->next = NULL;
+    Q.rear->next = s;
+    Q.rear = s;
+}
+```
+出队
+```cpp
+void deQueue(LinkQueue )
+```
 
 ### 6. 栈与队列算法应用
 	
-## 串
+## __串__
 ### 1. 定义及概念
 ### 2. 先、中、后（波兰）表达式转换
 ### 3. 模式匹配（KMP）
 * next数组
 * nextval数组
 	
-## 数组与广义表
+## __数组与广义表__
 ### 1. 定义及概念
 * 
 ### 2. 二、三维数组地址求解
@@ -303,7 +343,7 @@ x = S.data[++S.top1];
 ### 5. head、tail的操作
 * 
 
-## 数与二叉树
+## __树与二叉树__
 ### 1. 定义及概念
 * 
 ### 2. 先中后序遍历（算法）
@@ -323,7 +363,7 @@ x = S.data[++S.top1];
 * 构建
 * 求带权路径长度
 	
-## 图
+## __图__
 ### 1. 定义及概念
 * 有向图与无向图存储
 * 连通图与连通分量
@@ -333,12 +373,37 @@ x = S.data[++S.top1];
 * BFS
 * DFS
 ### 3. 算法应用
-* 最短路径
+* 最短路径   
+    __Dijkstra算法__
+
+    __Floyd算法__  
+    动态规划思想  
+    A[i][j] = min(A[i][j], A[i][k]+A[k][j])  
+    三层for循环，时间复杂度O($|v|^3$)  
+    $n*n$矩阵存储路径，空间复杂度O($|v|^2$)
+    ```cpp
+    vector<vector<int>> A(n, vector<int>(n)) = { };//图的邻接矩阵
+    vector<vector<int>> path(n, vector<int>(n, -1));//路径矩阵
+    void Floyd(vector<vector<int>> &A, vector<vector<int>> &path) {
+        int n = A.size();
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (A[i][j] > A[i][k] + A[k][j]) {
+                        A[i][j] = A[i][k] + A[k][j];
+                        path[i][j] = k;
+                    }
+                }
+            }
+        }
+    }
+    ```  
+    
 * 最小生成树
 * 拓扑排序
 * 关键路径
 	
-## 查找与排序
+## __查找与排序__
 ### 1. 顺序、折半、分块查找
 * 求平均长度
 ### 2. 散列表与哈希表
