@@ -281,19 +281,51 @@ x = S.data[++S.top1];
 ```
 
 ### 4. 循环队列
+&#8195;&#8195;循环队列是首尾相连的环形顺序队列，通过取余运算实现指针循环
 * 存储结构
 ```cpp
 struct SqQueue{
     ElemType data[MaxSize];
     int front, rear;
-}
+};
 ```
 * 指针初始位置
 ```cpp
-void InitQueue (Sq)
+Q.front = Q.rear = 0;
+//队满条件
+(Q.rear + 1) & MaxSize == Q.front;
+//队空条件
+Q.rear == Q.front;
 ```
 * 指针变化模式
+```cpp
+//队头指针进1
+Q.front = (Q.front + 1) % MaxiSize;
+//队尾指针进1
+Q.rear = (Q.rear + 1) % MaxSize;
+//队列长度
+(Q.rear + MaxSize - Q.front) % MaxSize;//
+```
+* 基本操作
 
+入队
+```cpp
+bool EnQueue(SqQueue &Q) {
+    if ((Q.rear + 1) & MaxSize == Q.front) return false;
+    Q.data[Q.rear] = x;
+    Q.rear = (Q.rear + 1) % MaxSize;
+    return true;
+}
+```
+出队
+```cpp
+bool DeQueue(SqQueue &Q) {
+    if ((Q.rear == Q.front) return false;
+    x = Q.data[Q.front];
+    Q.front = (Q.front + 1) % MaxSize;
+    return true;
+}
+```
 ### 5. 链队列
 * 存储结构
 ```cpp
@@ -319,7 +351,14 @@ void EnQueue(LinkQueue &Q, ElemType x) {
 ```
 出队
 ```cpp
-void deQueue(LinkQueue )
+bool deQueue(LinkQueue &Q, ElemType &x) {
+    if (Q.rear == Q.front) return false;
+    LinkNode *p = Q.front->next;
+    x = p->data;
+    Q.front->next = p->next;
+    free(p);
+    return true;
+}
 ```
 
 ### 6. 栈与队列算法应用
