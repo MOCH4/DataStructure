@@ -39,7 +39,33 @@ struct StructName{
 
 ### 2. C++标准库STL
 * vector 可变数组
+
+|  函数  |  功能  |
+|  :---  |  :---  | 
+|push_back|在数组的最后添加一个数据
+|pop_back|去掉数组的最后一个数据
+|at |得到编号位置的数据
+|begin |头部迭代器
+|end |尾部迭代器
+|front |得到数组头的引用
+|back |得到数组尾的引用
+|max_size |vector最大大小
+|capacity |当前vector分配的大小
+|size |当前使用数据的大小
+|resize |改变当前使用数据的大小
+|reserve |改变当前vecotr所分配空间的大小
+|erase |删除迭代器指向的数据项
+|clear |清空vector
+|rbegin |反向头部迭代器
+|rend |反向尾部迭代器
+|empty |判空
+|swap |与另一个vector交换数据
+
+![迭代器](http://c.biancheng.net/uploads/allimg/191128/2-19112Q14QE40.gif)
 * string 字符串
+
+| 函数 | 功能 |
+|:---|:---|
 * unordered_map 哈希map
 * unordered_set 哈希set
 * queue 队列
