@@ -444,8 +444,9 @@ bool deQueue(LinkQueue &Q, ElemType &x) {
     __Floyd算法__  
     动态规划思想  
     A[i][j] = min(A[i][j], A[i][k]+A[k][j])  
-    三层for循环，时间复杂度O($|v|^3$)  
-    $n*n$矩阵存储路径，空间复杂度O($|v|^2$)
+    三层for循环，时间复杂度O(|v|^3)  
+    n*n矩阵存储路径，空间复杂度O(|v|^2)
+    
     ```cpp
     vector<vector<int>> A(n, vector<int>(n)) = { };//图的邻接矩阵
     vector<vector<int>> path(n, vector<int>(n, -1));//路径矩阵
